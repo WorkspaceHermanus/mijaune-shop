@@ -1,28 +1,26 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const slides = [
   {
-    title: "Woorde wat bly",
-    subtitle: "Nuwe digbundels beskikbaar",
-    cta: "Bekyk Boeke",
-    href: "/books",
-    bg: "bg-[#e8e0d5]",
-  },
-  {
-    title: "Kuns wat praat",
-    subtitle: "Oorspronklike werke en beperkte drukke",
-    cta: "Bekyk Kuns",
+    image: "/images/outside-stanford.jpg",
+    title: "Buite Stanford",
+    sub: "Kuns",
     href: "/art",
-    bg: "bg-[#dde4ed]",
   },
   {
-    title: "Beelde in beweging",
-    subtitle: "Video's, dokumentêrs en musiek",
-    cta: "Bekyk Video's",
-    href: "/videos",
-    bg: "bg-[#e4ded8]",
+    image: "/images/house-on-the-hill.jpg",
+    title: "Huis op die Heuwel",
+    sub: "Kuns",
+    href: "/art",
+  },
+  {
+    image: "/images/blanket-in-the-sky.jpg",
+    title: "Blanket in the Sky",
+    sub: "Kuns",
+    href: "/art",
   },
 ];
 
@@ -30,37 +28,54 @@ export default function Hero() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 5000);
+    const t = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 6000);
     return () => clearInterval(t);
   }, []);
 
   const slide = slides[current];
 
   return (
-    <section className={`${slide.bg} transition-colors duration-700`}>
-      <div className="max-w-6xl mx-auto px-4 py-32 md:py-48 flex flex-col items-center text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">Mijaune Shop</p>
-        <h1 className="font-serif text-5xl md:text-7xl font-bold text-ink mb-6 leading-tight">
+    <section className="relative h-[92vh] overflow-hidden">
+      {slides.map((s, i) => (
+        <div
+          key={s.image}
+          className={`absolute inset-0 transition-opacity duration-1000 ${i === current ? "opacity-100" : "opacity-0"}`}
+        >
+          <Image
+            src={s.image}
+            alt={s.title}
+            fill
+            className="object-cover"
+            priority={i === 0}
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-ink/20" />
+        </div>
+      ))}
+
+      {/* Text overlay */}
+      <div className="absolute inset-0 flex flex-col items-start justify-end p-10 md:p-16">
+        <p className="text-[10px] uppercase tracking-[0.25em] text-paper/70 mb-3">{slide.sub}</p>
+        <h1 className="font-display text-5xl md:text-7xl font-light italic text-paper leading-none mb-8">
           {slide.title}
         </h1>
-        <p className="text-lg text-gray-600 mb-10 max-w-md">{slide.subtitle}</p>
         <Link
           href={slide.href}
-          className="inline-block border border-ink text-ink px-8 py-3 text-sm uppercase tracking-widest hover:bg-ink hover:text-cream transition-colors duration-200"
+          className="text-[10px] uppercase tracking-[0.25em] text-paper border-b border-paper/50 pb-0.5 hover:border-paper transition-colors"
         >
-          {slide.cta}
+          Sien Versameling
         </Link>
+      </div>
 
-        {/* Dots */}
-        <div className="flex gap-2 mt-12">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`w-2 h-2 rounded-full transition-colors ${i === current ? "bg-ink" : "bg-gray-400"}`}
-            />
-          ))}
-        </div>
+      {/* Slide dots */}
+      <div className="absolute bottom-10 right-10 md:right-16 flex gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-1.5 h-1.5 rounded-full transition-all ${i === current ? "bg-paper" : "bg-paper/40"}`}
+          />
+        ))}
       </div>
     </section>
   );

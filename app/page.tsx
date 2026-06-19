@@ -2,27 +2,30 @@ import Hero from "@/components/Hero";
 import CollectionGrid from "@/components/CollectionGrid";
 import Testimonials from "@/components/Testimonials";
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/lib/products";
+import { getByCategory } from "@/lib/products";
 import Link from "next/link";
 
 export default function Home() {
-  const featured = products.slice(0, 3);
+  const art = getByCategory("art").slice(0, 4);
 
   return (
     <>
       <Hero />
       <CollectionGrid />
 
-      {/* Featured products */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <div className="flex items-center justify-between mb-10">
-          <h2 className="font-serif text-3xl font-bold">Uitgesoekte Werke</h2>
-          <Link href="/books" className="text-xs uppercase tracking-widest text-gray-500 hover:text-accent transition-colors">
-            Sien alles →
+      {/* Featured art */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <div className="flex items-end justify-between mb-12">
+          <div>
+            <p className="text-[9px] uppercase tracking-[0.25em] text-dust mb-2">Nuut</p>
+            <h2 className="font-display text-4xl font-light italic">Uitgesoekte Werke</h2>
+          </div>
+          <Link href="/art" className="text-[9px] uppercase tracking-[0.2em] text-dust hover:text-ink border-b border-dust/40 hover:border-ink pb-px transition-colors">
+            Sien alles
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {featured.map((p) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {art.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>
@@ -31,15 +34,17 @@ export default function Home() {
       <Testimonials />
 
       {/* Contact strip */}
-      <section className="max-w-6xl mx-auto px-4 py-16 text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-4">Meer as net ʼn winkel</p>
-        <h2 className="font-serif text-3xl font-bold mb-4">Samewerking & Besprekings</h2>
-        <p className="text-gray-500 max-w-md mx-auto mb-8">
-          Belangstel in ʼn opvoering, onderhoud of samewerkingsprojek? Kontak my direk.
+      <section className="border-t border-ink/10 py-24 text-center">
+        <p className="text-[9px] uppercase tracking-[0.25em] text-dust mb-5">Meer as net ʼn winkel</p>
+        <h2 className="font-display text-4xl md:text-5xl font-light italic mb-6">
+          Samewerking & Besprekings
+        </h2>
+        <p className="text-[13px] text-dust max-w-sm mx-auto mb-10 leading-relaxed">
+          Opvoerings, onderhoude of projekte — kontak my direk.
         </p>
         <Link
           href="/contact"
-          className="inline-block border border-ink px-8 py-3 text-sm uppercase tracking-widest hover:bg-ink hover:text-cream transition-colors"
+          className="text-[9px] uppercase tracking-[0.25em] border-b border-ink/40 pb-0.5 hover:border-ink transition-colors"
         >
           Kontak My
         </Link>

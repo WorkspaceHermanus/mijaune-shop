@@ -9,13 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       colors: {
-        cream: "#f9f6f1",
-        ink: "#1a1a1a",
-        accent: "#2c4a7c",
+        paper: "#f7f4ef",
+        ink: "#111111",
+        dust: "#9a9189",
+        warm: "#e8e0d5",
+      },
+      letterSpacing: {
+        widest2: "0.25em",
       },
     },
   },

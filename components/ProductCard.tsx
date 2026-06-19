@@ -9,31 +9,30 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="group flex flex-col">
-      <Link href={`/product/${product.slug}`} className="block overflow-hidden bg-gray-100 aspect-square mb-4 relative">
-        {product.image.includes("placeholder") ? (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 group-hover:scale-105 transition-transform duration-300">
-            <span className="font-serif text-4xl text-gray-300">M</span>
-          </div>
-        ) : (
+      <Link href={`/product/${product.slug}`} className="block overflow-hidden bg-warm relative aspect-[3/4] mb-5">
+        {product.image && !product.image.includes("placeholder") ? (
           <Image
             src={product.image}
             alt={product.name}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="font-display text-6xl font-light italic text-dust">M</span>
+          </div>
         )}
       </Link>
-      <div className="flex-1 flex flex-col">
-        <Link href={`/product/${product.slug}`} className="font-serif text-lg font-medium hover:text-accent transition-colors">
+      <div className="flex flex-col gap-1">
+        <Link href={`/product/${product.slug}`} className="font-display text-xl font-light italic hover:text-dust transition-colors">
           {product.name}
         </Link>
-        <p className="text-sm text-gray-500 mt-1 mb-3 flex-1">{product.description}</p>
-        <div className="flex items-center justify-between">
-          <span className="font-medium">R{product.price}</span>
+        <div className="flex items-center justify-between mt-3">
+          <span className="text-[11px] text-dust tracking-wide">R{product.price}</span>
           <button
             onClick={() => add(product)}
-            className="text-xs uppercase tracking-widest border border-ink px-4 py-2 hover:bg-ink hover:text-cream transition-colors"
+            className="text-[9px] uppercase tracking-[0.2em] text-ink/50 hover:text-ink border-b border-ink/20 hover:border-ink pb-px transition-colors"
           >
             In Mandjie
           </button>

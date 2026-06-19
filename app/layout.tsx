@@ -1,22 +1,32 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartProvider from "@/components/CartProvider";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" });
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+});
+
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-body",
+});
 
 export const metadata: Metadata = {
-  title: "Mijaune Shop",
-  description: "Boeke, Video's en Kuns",
+  title: "Mijaune",
+  description: "Fotografie, Boeke & Kuns",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="af">
-      <body className={`${inter.variable} ${playfair.variable} font-sans bg-cream text-ink min-h-screen flex flex-col`}>
+      <body className={`${cormorant.variable} ${jost.variable} min-h-screen flex flex-col`}>
         <CartProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
