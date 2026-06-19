@@ -3,6 +3,7 @@ import { products } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   const product = products.find((p) => p.slug === params.slug);
@@ -31,8 +32,14 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         {product.name}
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div className="bg-gradient-to-br from-gray-100 to-gray-200 aspect-square flex items-center justify-center">
-          <span className="font-serif text-8xl text-gray-300">M</span>
+        <div className="relative aspect-square bg-gray-100">
+          {product.image.includes("placeholder") ? (
+            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+              <span className="font-serif text-8xl text-gray-300">M</span>
+            </div>
+          ) : (
+            <Image src={product.image} alt={product.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+          )}
         </div>
         <div className="flex flex-col justify-center">
           <h1 className="font-serif text-4xl font-bold mb-4">{product.name}</h1>

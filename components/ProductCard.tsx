@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { Product } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 
@@ -8,10 +9,20 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="group flex flex-col">
-      <Link href={`/product/${product.slug}`} className="block overflow-hidden bg-gray-100 aspect-square mb-4">
-        <div className="w-full h-full flex items-center justify-center text-gray-300 group-hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-gray-100 to-gray-200">
-          <span className="font-serif text-4xl text-gray-300">M</span>
-        </div>
+      <Link href={`/product/${product.slug}`} className="block overflow-hidden bg-gray-100 aspect-square mb-4 relative">
+        {product.image.includes("placeholder") ? (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 group-hover:scale-105 transition-transform duration-300">
+            <span className="font-serif text-4xl text-gray-300">M</span>
+          </div>
+        ) : (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        )}
       </Link>
       <div className="flex-1 flex flex-col">
         <Link href={`/product/${product.slug}`} className="font-serif text-lg font-medium hover:text-accent transition-colors">
