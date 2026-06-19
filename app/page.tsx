@@ -15,13 +15,10 @@ export default function Home() {
 
       {/* Featured art */}
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <p className="text-[9px] uppercase tracking-[0.25em] text-dust mb-2">Nuut</p>
-            <h2 className="font-display text-4xl font-light italic">Uitgesoekte Werke</h2>
-          </div>
-          <Link href="/art" className="text-[9px] uppercase tracking-[0.2em] text-dust hover:text-ink border-b border-dust/40 hover:border-ink pb-px transition-colors">
-            Sien alles
+        <div className="flex items-center justify-between mb-10">
+          <h2 className="text-lg font-bold uppercase tracking-widest text-ink">Uitgesoekte Werke</h2>
+          <Link href="/art" className="text-[10px] uppercase tracking-widest text-mustard font-semibold hover:text-ink transition-colors">
+            View All
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -34,17 +31,15 @@ export default function Home() {
       <Testimonials />
 
       {/* Contact strip */}
-      <section className="border-t border-ink/10 py-24 text-center">
-        <p className="text-[9px] uppercase tracking-[0.25em] text-dust mb-5">Meer as net ʼn winkel</p>
-        <h2 className="font-display text-4xl md:text-5xl font-light italic mb-6">
-          Samewerking & Besprekings
-        </h2>
-        <p className="text-[13px] text-dust max-w-sm mx-auto mb-10 leading-relaxed">
+      <section className="border-t border-ink/10 py-16 text-center px-6">
+        <p className="text-[10px] uppercase tracking-widest text-mustard font-semibold mb-4">Meer as net ʼn winkel</p>
+        <h2 className="text-2xl font-bold uppercase tracking-wide text-ink mb-4">Samewerking & Besprekings</h2>
+        <p className="text-sm text-ink/60 max-w-sm mx-auto mb-8 leading-relaxed">
           Opvoerings, onderhoude of projekte — kontak my direk.
         </p>
         <Link
           href="/contact"
-          className="text-[9px] uppercase tracking-[0.25em] border-b border-ink/40 pb-0.5 hover:border-ink transition-colors"
+          className="inline-block bg-ink text-cream text-xs uppercase tracking-widest font-semibold px-8 py-3 hover:bg-mustard hover:text-ink transition-colors"
         >
           Kontak My
         </Link>

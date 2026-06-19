@@ -1,32 +1,28 @@
 const quotes = [
   {
-    text: "Mijaune se lens vang wat taal soms nie kan sê nie — stilte met gewig.",
-    source: "Die Burger",
-  },
-  {
-    text: "Haar beelde is onvergeetlik. ʼn Stem wat die Suid-Afrikaanse kunswêreld nodig het.",
     source: "Vrye Weekblad",
+    text: "\"Mijaune se lens vang wat taal soms nie kan sê nie. Haar beelde bly lank ná jy dit gesien het.\"",
   },
   {
-    text: "Elke foto is ʼn uitnodiging om te bly staan. Om te kyk. Om te voel.",
-    source: "LitNet",
+    source: "Vrye Weekblad",
+    text: "\"Dit is asof die stilte sy smart deel. Mense wat nog te jonk is om te weet hoe dit voel as jou hart breek, staan tranerig.\"",
+  },
+  {
+    source: "Klyntji",
+    text: "\"ʼn Stem wat die Afrikaanse kunswêreld nodig het — rou, eerlik en onvergeetlik in elke raam.\"",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section className="border-t border-ink/10 py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-          {quotes.map((q, i) => (
-            <div key={i} className="flex flex-col gap-5">
-              <p className="font-display text-2xl font-light italic leading-snug text-ink">
-                &ldquo;{q.text}&rdquo;
-              </p>
-              <span className="text-[9px] uppercase tracking-[0.25em] text-dust">{q.source}</span>
-            </div>
-          ))}
-        </div>
+    <section className="py-20 px-6 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        {quotes.map((q, i) => (
+          <div key={i} className="text-center flex flex-col gap-4">
+            <p className="text-sm font-bold uppercase tracking-widest text-ink">{q.source}</p>
+            <p className="text-sm leading-relaxed text-ink/70">{q.text}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

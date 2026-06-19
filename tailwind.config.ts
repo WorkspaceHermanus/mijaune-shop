@@ -9,17 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
-        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       colors: {
-        paper: "#f7f4ef",
-        ink: "#111111",
-        dust: "#9a9189",
-        warm: "#e8e0d5",
-      },
-      letterSpacing: {
-        widest2: "0.25em",
+        cream: "#f5ede0",
+        ink: "#1a1a1a",
+        mustard: "#c9a227",
       },
     },
   },
