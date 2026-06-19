@@ -8,12 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-      },
       colors: {
-        cream: "#f5ede0",
-        ink: "#1a1a1a",
+        site: "#fffdf5",
+        ink: "#444444",
         mustard: "#c9a227",
       },
     },

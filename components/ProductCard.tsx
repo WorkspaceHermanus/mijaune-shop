@@ -9,7 +9,9 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="group flex flex-col">
-      <Link href={`/product/${product.slug}`} className="block overflow-hidden bg-stone-200 relative aspect-[3/4] mb-4">
+      <Link href={`/product/${product.slug}`}
+        className="block relative overflow-hidden bg-gray-100 mb-3"
+        style={{ aspectRatio: "3/4" }}>
         {product.image && !product.image.includes("placeholder") ? (
           <Image
             src={product.image}
@@ -19,20 +21,20 @@ export default function ProductCard({ product }: { product: Product }) {
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-stone-200">
-            <span className="text-4xl font-bold uppercase text-stone-400">M</span>
+          <div className="w-full h-full flex items-center justify-center bg-gray-100">
+            <span className="text-3xl font-black uppercase text-gray-300">M</span>
           </div>
         )}
       </Link>
-      <Link href={`/product/${product.slug}`} className="text-sm font-semibold uppercase tracking-wide text-ink hover:text-mustard transition-colors mb-1">
+      <Link href={`/product/${product.slug}`}
+        className="text-sm font-semibold tracking-wide text-ink hover:text-mustard transition-colors mb-1">
         {product.name}
       </Link>
-      <div className="flex items-center justify-between mt-1">
-        <span className="text-sm text-ink/60">R{product.price}</span>
-        <button
-          onClick={() => add(product)}
-          className="text-[10px] uppercase tracking-widest text-mustard font-semibold hover:text-ink transition-colors"
-        >
+      <div className="flex items-center justify-between">
+        <span className="text-sm text-gray-500">R{product.price}</span>
+        <button onClick={() => add(product)}
+          className="text-xs font-semibold uppercase tracking-widest hover:text-mustard transition-colors"
+          style={{ color: "#c9a227" }}>
           + Mandjie
         </button>
       </div>

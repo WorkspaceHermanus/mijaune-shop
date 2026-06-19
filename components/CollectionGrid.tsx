@@ -2,53 +2,44 @@ import Link from "next/link";
 import Image from "next/image";
 
 const collections = [
-  {
-    title: "VIDEO\nVIR MY",
-    href: "/videos",
-    image: "/images/blanket-in-the-sky.jpg",
-  },
-  {
-    title: "BOEKE EN\nWOORDE",
-    href: "/books",
-    image: null,
-    bg: "bg-stone-300",
-  },
-  {
-    title: "KUNS",
-    href: "/art",
-    image: "/images/zamalekker.jpg",
-  },
+  { title: "VIDEO VIR MY", href: "/videos", image: "/images/blanket-in-the-sky.jpg" },
+  { title: "BOEKE EN WOORDE", href: "/books", image: "/images/no-motor-boats.jpg" },
+  { title: "KUNS", href: "/art", image: "/images/zamalekker.jpg" },
 ];
 
 export default function CollectionGrid() {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-3 gap-0">
+    <div className="grid grid-cols-1 md:grid-cols-3" id="collection-list-grid">
       {collections.map((c) => (
-        <Link key={c.href} href={c.href} className="group relative block overflow-hidden" style={{ height: "380px" }}>
-          {/* Background image or colour */}
-          {c.image ? (
-            <Image
-              src={c.image}
-              alt={c.title}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 33vw"
-            />
-          ) : (
-            <div className={`absolute inset-0 ${c.bg}`} />
-          )}
+        <Link
+          key={c.href}
+          href={c.href}
+          title={`Browse our ${c.title} collection`}
+          className="featured-card group relative block overflow-hidden"
+          style={{ minHeight: 380 }}
+        >
+          {/* Background image */}
+          <Image
+            src={c.image}
+            alt={c.title}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
 
-          {/* White card label — top left, like Reenwolf */}
-          <div className="absolute top-6 left-6 bg-cream p-4 min-w-[140px]">
-            <p className="text-base font-bold uppercase leading-tight whitespace-pre-line text-ink">
+          {/* White card header — top left, exactly like Venture */}
+          <div className="featured-card__header featured-card__header--background absolute top-0 left-0 z-10">
+            <p className="text-lg font-black uppercase leading-tight tracking-wide text-ink"
+               style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" }}>
               {c.title}
             </p>
-            <p className="text-[10px] uppercase tracking-widest text-mustard font-semibold mt-1.5">
-              View All
-            </p>
+            <span className="featured-card__action block text-xs font-semibold tracking-widest uppercase mt-1.5"
+                  style={{ color: "#c9a227" }}>
+              View all
+            </span>
           </div>
         </Link>
       ))}
-    </section>
+    </div>
   );
 }
