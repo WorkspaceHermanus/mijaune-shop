@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --bg: #080808;
-  --surface: #111111;
-  --border: rgba(255,255,255,0.07);
-  --cream: #ede8dd;
-  --muted: rgba(237,232,221,0.38);
+  --bg: #faf8f2;
+  --surface: #f3efe6;
+  --border: #e4dfd4;
+  --text: #1c1c1c;
+  --muted: #999;
   --blue: #1a6fff;
   --font-display: "Dancing Script", cursive;
   --font-body: "Jost", system-ui, sans-serif;
@@ -17,13 +17,8 @@ html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--bg);
-  color: var(--cream);
+  color: var(--text);
   font-family: var(--font-body);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  color: var(--cream);
 }
 
 ::selection { background: var(--blue); color: #fff; }
@@ -37,9 +32,8 @@ h1, h2, h3, h4, h5, h6 {
 .marquee-inner {
   display: flex;
   width: max-content;
-  animation: marquee 32s linear infinite;
+  animation: marquee 36s linear infinite;
 }
-.marquee-inner:hover { animation-play-state: paused; }
 
 /* ── Watermark ── */
 .watermarked { position: relative; display: block; }
@@ -47,36 +41,21 @@ h1, h2, h3, h4, h5, h6 {
   content: "© Mijaune";
   position: absolute; bottom: 12px; right: 14px;
   font-family: var(--font-display); font-size: 0.8rem;
-  color: rgba(255,255,255,0.55);
-  text-shadow: 0 1px 6px rgba(0,0,0,0.95);
-  pointer-events: none; z-index: 20;
+  color: rgba(255,255,255,0.6);
+  text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+  pointer-events: none; z-index: 10;
 }
 .watermarked::before {
   content: "© Mijaune";
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%) rotate(-30deg);
   font-family: var(--font-display); font-size: 2.5rem; font-weight: 700;
-  color: rgba(255,255,255,0.1);
-  pointer-events: none; z-index: 20;
+  color: rgba(255,255,255,0.12);
+  pointer-events: none; z-index: 10;
   white-space: nowrap; letter-spacing: 3px;
 }
 
-/* ── Hover reveal ── */
-.reveal-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 55%);
-  opacity: 0;
-  transition: opacity 0.45s ease;
-  z-index: 10;
-}
-.group:hover .reveal-overlay { opacity: 1; }
-
-.reveal-info {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 1.25rem 1rem;
-  transform: translateY(10px);
-  opacity: 0;
-  transition: transform 0.45s ease, opacity 0.45s ease;
-  z-index: 15;
-}
-.group:hover .reveal-info { transform: translateY(0); opacity: 1; }
+/* ── Image zoom on hover ── */
+.img-wrap { overflow: hidden; }
+.img-wrap img { transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+.img-wrap:hover img { transform: scale(1.04); }

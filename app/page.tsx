@@ -5,228 +5,161 @@ import { products } from "@/lib/products";
 const art   = products.filter(p => p.category === "art");
 const books = products.filter(p => p.category === "books");
 
-const TICKER = "KUNS  ·  FOTOGRAFIE  ·  BOEKE EN WOORDE  ·  HERMANUS  ·  BEPERKTE OPLAAG  ·  GESIGNEER  ·  ";
-
 export default function Home() {
   return (
-    <div className="bg-[#080808] min-h-screen">
+    <div style={{ backgroundColor: "#faf8f2" }}>
 
-      {/* ─────────── HERO ─────────── */}
-      <section className="relative flex flex-col md:flex-row min-h-screen">
+      {/* ── HERO ── */}
+      <section className="relative w-full" style={{ height: "100svh", minHeight: 500 }}>
+        <Image
+          src="/images/outside-stanford.jpg"
+          alt="Mijaune"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          quality={92}
+          priority
+        />
+        {/* bottom gradient */}
+        <div className="absolute inset-x-0 bottom-0 h-48 pointer-events-none"
+          style={{ background: "linear-gradient(to top, rgba(250,248,242,0.85), transparent)" }} />
 
-        {/* Left — text panel */}
-        <div className="relative z-10 flex flex-col justify-center
-          px-8 md:px-16 pt-28 pb-16 md:py-0
-          md:w-[42%] bg-[#080808]">
-
-          <p className="text-[9px] tracking-[0.35em] uppercase mb-8"
-            style={{ color: "#1a6fff" }}>
-            Mijaune Shop
+        {/* hero text */}
+        <div className="absolute inset-x-0 bottom-0 px-6 md:px-14 pb-12 md:pb-16">
+          <p className="text-[9px] tracking-[0.4em] uppercase mb-3" style={{ color: "rgba(255,255,255,0.7)" }}>
+            Kuns · Fotografie · Woorde
           </p>
-
-          <h1 className="font-display font-bold leading-[0.88] mb-8"
+          <h1 className="leading-none mb-8"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(4.5rem, 10vw, 8.5rem)",
-              color: "#ede8dd",
+              fontSize: "clamp(3.5rem, 9vw, 7.5rem)",
+              color: "#fff",
+              textShadow: "0 2px 24px rgba(0,0,0,0.25)",
             }}>
-            Kuns<br />wat bly
+            Mijaune
           </h1>
-
-          <p className="text-[10px] tracking-[0.3em] uppercase mb-12"
-            style={{ color: "rgba(237,232,221,0.35)" }}>
-            Fotografie · Boeke · Woorde
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4">
-            <Link href="/art"
-              className="inline-block text-[10px] font-semibold tracking-[0.28em] uppercase
-                px-8 py-4 bg-[#1a6fff] text-white
-                hover:bg-[#ede8dd] hover:text-[#080808]
-                transition-all duration-300">
-              Sien Werke
-            </Link>
-            <Link href="/books"
-              className="text-[10px] font-semibold tracking-[0.28em] uppercase
-                text-[#ede8dd]/35 hover:text-[#ede8dd] transition-colors duration-200">
-              Boeke →
-            </Link>
-          </div>
-        </div>
-
-        {/* Right — hero image */}
-        <div className="relative md:w-[58%] h-[62vh] md:h-screen overflow-hidden">
-          <Image
-            src="/images/outside-stanford.jpg"
-            alt="Mijaune — Outside Stanford"
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 768px) 100vw, 58vw"
-            quality={92}
-            priority
-          />
-          {/* Gradient bleed into left panel on desktop */}
-          <div className="hidden md:block absolute inset-y-0 left-0 w-32
-            bg-gradient-to-r from-[#080808] to-transparent pointer-events-none" />
-          {/* Bottom vignette */}
-          <div className="absolute inset-x-0 bottom-0 h-24
-            bg-gradient-to-t from-[#080808] to-transparent pointer-events-none" />
-        </div>
-
-        {/* Scroll hint */}
-        <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2
-          flex-col items-center gap-2 z-10">
-          <div className="w-px h-12 bg-[#ede8dd]/15 animate-pulse" />
+          <Link href="/art"
+            className="inline-block text-[9px] font-medium tracking-[0.35em] uppercase
+              px-7 py-3.5 border border-white/70 text-white
+              hover:bg-white hover:text-[#1c1c1c]
+              transition-all duration-300">
+            Sien werke
+          </Link>
         </div>
       </section>
 
-      {/* ─────────── TICKER ─────────── */}
-      <div className="marquee-track border-t border-b border-white/[0.06] py-3.5 bg-[#080808]">
+      {/* ── MARQUEE ── */}
+      <div className="marquee-track py-3 border-b" style={{ borderColor: "#e4dfd4" }}>
         <div className="marquee-inner select-none">
           {[...Array(6)].map((_, i) => (
-            <span key={i} className="text-[9px] tracking-[0.35em] uppercase px-6"
-              style={{ color: "rgba(237,232,221,0.2)" }}>
-              {TICKER}
+            <span key={i} className="text-[9px] tracking-[0.35em] uppercase px-8"
+              style={{ color: "#bbb" }}>
+              KUNS  ·  FOTOGRAFIE  ·  BOEKE EN WOORDE  ·  HERMANUS  ·  GESIGNEER  ·
             </span>
           ))}
         </div>
       </div>
 
-      {/* ─────────── ART ─────────── */}
-      <section className="px-5 md:px-10 pt-20 md:pt-28 pb-12">
-        <div className="flex items-end justify-between mb-8 md:mb-10">
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.8rem,6vw,5rem)", color: "#ede8dd" }}>
-            Kuns
-          </h2>
-          <Link href="/art"
-            className="text-[9px] font-semibold tracking-[0.28em] uppercase
-              text-[#ede8dd]/30 hover:text-[#1a6fff] transition-colors pb-1">
-            Sien alles →
+      {/* ── ART ── */}
+      <section className="px-5 md:px-10 pt-16 md:pt-24 pb-8">
+        <div className="flex items-end justify-between mb-8">
+          <p className="text-[9px] font-medium tracking-[0.35em] uppercase" style={{ color: "#999" }}>Kuns</p>
+          <Link href="/art" className="text-[9px] font-medium tracking-[0.3em] uppercase"
+            style={{ color: "#1a6fff" }}>
+            Sien alles
           </Link>
         </div>
 
-        {/* Mobile: 2-col even grid */}
-        <div className="grid grid-cols-2 gap-[2px] md:hidden">
-          {art.map(p => (
-            <Link key={p.id} href={`/product/${p.slug}`}
-              className="relative watermarked overflow-hidden group aspect-square">
+        {/* 2+1 editorial layout on desktop, 2-col on mobile */}
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3">
+
+          {/* Large feature — col 1-8 */}
+          <Link href={`/product/${art[0].slug}`}
+            className="col-span-2 md:col-span-8 img-wrap watermarked relative block"
+            style={{ aspectRatio: "16/10" }}>
+            <Image src={art[0].image} alt={art[0].name} fill
+              className="object-cover" sizes="(max-width: 768px) 100vw, 67vw" quality={90} priority />
+          </Link>
+
+          {/* Right column — col 9-12, two stacked */}
+          <div className="hidden md:flex md:col-span-4 flex-col gap-3">
+            {art.slice(1, 3).map(p => (
+              <Link key={p.id} href={`/product/${p.slug}`}
+                className="img-wrap watermarked relative block flex-1"
+                style={{ minHeight: 0 }}>
+                <div className="relative" style={{ aspectRatio: "4/3" }}>
+                  <Image src={p.image} alt={p.name} fill
+                    className="object-cover" sizes="33vw" quality={88} />
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Items 2-3 on mobile (hidden on desktop in right col above, show as normal grid items) */}
+          {art.slice(1, 3).map(p => (
+            <Link key={p.id + "-m"} href={`/product/${p.slug}`}
+              className="md:hidden img-wrap watermarked relative block aspect-square">
               <Image src={p.image} alt={p.name} fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="50vw" quality={85} />
-              <div className="reveal-overlay" />
-              <div className="reveal-info">
-                <p className="text-[9px] tracking-[0.2em] uppercase text-white/50 mb-0.5">R{p.price}</p>
-                <p className="text-sm text-white" style={{ fontFamily: "var(--font-display)" }}>{p.name}</p>
-              </div>
+                className="object-cover" sizes="50vw" quality={85} />
+            </Link>
+          ))}
+
+          {/* Bottom row — 3 across on desktop, 2-col on mobile */}
+          {art.slice(3, 5).map(p => (
+            <Link key={p.id} href={`/product/${p.slug}`}
+              className="col-span-1 md:col-span-6 img-wrap watermarked relative block"
+              style={{ aspectRatio: "3/2" }}>
+              <Image src={p.image} alt={p.name} fill
+                className="object-cover" sizes="(max-width: 768px) 50vw, 50vw" quality={88} />
             </Link>
           ))}
         </div>
 
-        {/* Desktop: editorial grid */}
-        <div className="hidden md:block">
-          {/* Row A — tall left + 2 stacked right */}
-          <div className="grid gap-[3px]"
-            style={{ gridTemplateColumns: "1.15fr 0.85fr", gridTemplateRows: "310px 310px" }}>
-            {/* Item 0 — spans 2 rows */}
-            <Link href={`/product/${art[0].slug}`}
-              className="relative watermarked overflow-hidden group"
-              style={{ gridRow: "1 / 3" }}>
-              <Image src={art[0].image} alt={art[0].name} fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 1280px) 57vw, 700px" quality={90} />
-              <div className="reveal-overlay" />
-              <div className="reveal-info">
-                <p className="text-[9px] tracking-[0.2em] uppercase text-white/50 mb-1">R{art[0].price}</p>
-                <p className="text-xl text-white" style={{ fontFamily: "var(--font-display)" }}>{art[0].name}</p>
-              </div>
-            </Link>
-
-            {/* Items 1 & 2 — stacked in right col */}
-            {art.slice(1, 3).map(p => (
-              <Link key={p.id} href={`/product/${p.slug}`}
-                className="relative watermarked overflow-hidden group">
-                <Image src={p.image} alt={p.name} fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 1280px) 43vw, 540px" quality={90} />
-                <div className="reveal-overlay" />
-                <div className="reveal-info">
-                  <p className="text-[9px] tracking-[0.2em] uppercase text-white/50 mb-0.5">R{p.price}</p>
-                  <p className="text-base text-white" style={{ fontFamily: "var(--font-display)" }}>{p.name}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* Row B — 2 wide landscape */}
-          <div className="grid grid-cols-2 gap-[3px] mt-[3px]">
-            {art.slice(3, 5).map(p => (
-              <Link key={p.id} href={`/product/${p.slug}`}
-                className="relative watermarked overflow-hidden group aspect-[16/9]">
-                <Image src={p.image} alt={p.name} fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="50vw" quality={90} />
-                <div className="reveal-overlay" />
-                <div className="reveal-info">
-                  <p className="text-[9px] tracking-[0.2em] uppercase text-white/50 mb-0.5">R{p.price}</p>
-                  <p className="text-base text-white" style={{ fontFamily: "var(--font-display)" }}>{p.name}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+        {/* Captions below grid */}
+        <div className="mt-5 flex flex-col gap-1">
+          <p className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "#bbb" }}>
+            {art[0].name} — R{art[0].price}
+          </p>
         </div>
       </section>
 
-      {/* ─────────── PULL QUOTE ─────────── */}
-      <div className="px-8 md:px-24 py-24 md:py-36 text-center border-t border-white/[0.05]">
-        <p className="leading-snug text-[#ede8dd]/18"
+      {/* ── PULL QUOTE ── */}
+      <div className="px-8 md:px-24 py-20 md:py-32 text-center border-t border-b" style={{ borderColor: "#e4dfd4" }}>
+        <p className="leading-snug"
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(1.6rem, 4.5vw, 3.5rem)",
+            fontSize: "clamp(1.8rem, 4vw, 3.2rem)",
+            color: "#c5bfb3",
           }}>
-          "Kuns is die taal wat almal verstaan<br />maar min kan praat."
+          "Kuns is die taal wat almal<br />verstaan maar min kan praat."
         </p>
       </div>
 
-      {/* ─────────── BOOKS ─────────── */}
-      <section className="border-t border-white/[0.05] px-5 md:px-10 pt-16 pb-28">
-        <div className="flex items-end justify-between mb-8 md:mb-10">
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.8rem,6vw,5rem)", color: "#ede8dd" }}>
-            Boeke en Woorde
-          </h2>
-          <Link href="/books"
-            className="text-[9px] font-semibold tracking-[0.28em] uppercase
-              text-[#ede8dd]/30 hover:text-[#1a6fff] transition-colors pb-1">
-            Sien alles →
+      {/* ── BOOKS ── */}
+      <section className="px-5 md:px-10 pt-16 md:pt-24 pb-20 md:pb-32">
+        <div className="flex items-end justify-between mb-8">
+          <p className="text-[9px] font-medium tracking-[0.35em] uppercase" style={{ color: "#999" }}>Boeke en Woorde</p>
+          <Link href="/books" className="text-[9px] font-medium tracking-[0.3em] uppercase"
+            style={{ color: "#1a6fff" }}>
+            Sien alles
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/[0.06]">
-          {books.map((b, i) => (
-            <Link key={b.id} href={`/product/${b.slug}`}
-              className="group flex md:flex-col gap-5 md:gap-0 px-0 md:px-8 py-6 md:py-10
-                hover:bg-white/[0.02] transition-colors duration-300
-                first:md:pl-0 last:md:pr-0">
-              {/* Book placeholder cover */}
-              <div className="flex-shrink-0 w-20 md:w-full md:aspect-[3/4]
-                bg-[#111] flex items-center justify-center overflow-hidden mb-0 md:mb-7">
-                <span className="text-4xl md:text-6xl font-bold select-none"
-                  style={{ fontFamily: "var(--font-display)", color: "#1a2a4a" }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          {books.map(b => (
+            <Link key={b.id} href={`/product/${b.slug}`} className="group">
+              <div className="aspect-[3/4] mb-5 flex items-center justify-center"
+                style={{ backgroundColor: "#f0ece3" }}>
+                <span className="text-8xl font-light select-none"
+                  style={{ fontFamily: "var(--font-display)", color: "#d5cfc5" }}>
                   {b.name[0]}
                 </span>
               </div>
-              <div className="flex flex-col justify-center md:justify-start">
-                <p className="text-[9px] tracking-[0.25em] uppercase text-[#ede8dd]/25 mb-2">
-                  Boeke en Woorde
-                </p>
-                <h3 className="text-lg mb-2 leading-tight"
-                  style={{ fontFamily: "var(--font-display)", color: "#ede8dd" }}>
-                  {b.name}
-                </h3>
-                <p className="text-xs text-[#ede8dd]/35 mb-4 leading-relaxed hidden md:block">
-                  {b.description}
-                </p>
-                <p className="text-sm font-semibold" style={{ color: "#1a6fff" }}>R{b.price}</p>
-              </div>
+              <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: "#bbb" }}>
+                Boeke en Woorde
+              </p>
+              <p className="text-sm mb-1 font-medium" style={{ color: "#1c1c1c" }}>{b.name}</p>
+              <p className="text-sm" style={{ color: "#1a6fff" }}>R{b.price}</p>
             </Link>
           ))}
         </div>

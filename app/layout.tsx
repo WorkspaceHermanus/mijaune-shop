@@ -20,7 +20,7 @@ const jost = Jost({
 export const metadata: Metadata = {
   title: "Mijaune Shop",
   description: "Mijaune se fotografie, boeke en kuns — beperkte oplaag, gesigneer.",
-  themeColor: "#080808",
+  themeColor: "#faf8f2",
   icons: { icon: "/images/logo.png" },
 };
 
@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="af">
       <body
         className={`${dancing.variable} ${jost.variable} min-h-screen flex flex-col`}
-        style={{ backgroundColor: "#080808", color: "#ede8dd", fontFamily: "var(--font-body)" }}
+        style={{ backgroundColor: "#faf8f2", color: "#1c1c1c", fontFamily: "var(--font-body)" }}
       >
         <CartProvider>
           <Navbar />
