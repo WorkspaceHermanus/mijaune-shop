@@ -5,12 +5,14 @@ import { products } from "@/lib/products";
 const art   = products.filter(p => p.category === "art");
 const books = products.filter(p => p.category === "books");
 
+const tilts = [-3, 2, -2, 3, -1.5];
+
 export default function Home() {
   return (
-    <div style={{ backgroundColor: "#faf8f2" }}>
+    <div style={{ backgroundColor: "#faf8f2" }} className="overflow-x-clip">
 
       {/* ── HERO ── */}
-      <section className="relative w-full" style={{ height: "100svh", minHeight: 500 }}>
+      <section className="relative w-full" style={{ height: "100svh", minHeight: 560 }}>
         <Image
           src="/images/outside-stanford.jpg"
           alt="Mijaune"
@@ -20,19 +22,34 @@ export default function Home() {
           quality={92}
           priority
         />
-        {/* bottom gradient */}
-        <div className="absolute inset-x-0 bottom-0 h-48 pointer-events-none"
-          style={{ background: "linear-gradient(to top, rgba(250,248,242,0.85), transparent)" }} />
+        <div className="absolute inset-x-0 bottom-0 h-56 pointer-events-none"
+          style={{ background: "linear-gradient(to top, rgba(250,248,242,0.9), transparent)" }} />
 
-        {/* hero text */}
-        <div className="absolute inset-x-0 bottom-0 px-6 md:px-14 pb-12 md:pb-16">
+        {/* Spinning badge — playful, top right */}
+        <div className="absolute top-6 right-6 md:top-10 md:right-10 w-24 h-24 md:w-32 md:h-32 z-10">
+          <svg viewBox="0 0 100 100" className="w-full h-full spin-badge">
+            <defs>
+              <path id="circlePath" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
+            </defs>
+            <text fontSize="8.6" fill="#fff" letterSpacing="2">
+              <textPath href="#circlePath">
+                BEPERKTE OPLAAG • GESIGNEER • MIJAUNE •
+              </textPath>
+            </text>
+          </svg>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#1a6fff" }} />
+          </div>
+        </div>
+
+        <div className="absolute inset-x-0 bottom-0 px-6 md:px-14 pb-14 md:pb-20">
           <p className="text-[9px] tracking-[0.4em] uppercase mb-3" style={{ color: "rgba(255,255,255,0.7)" }}>
             Kuns · Fotografie · Woorde
           </p>
           <h1 className="leading-none mb-8"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(3.5rem, 9vw, 7.5rem)",
+              fontSize: "clamp(3.5rem, 10vw, 8.5rem)",
               color: "#fff",
               textShadow: "0 2px 24px rgba(0,0,0,0.25)",
             }}>
@@ -60,70 +77,91 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── ART ── */}
-      <section className="px-5 md:px-10 pt-16 md:pt-24 pb-8">
-        <div className="flex items-end justify-between mb-8">
-          <p className="text-[9px] font-medium tracking-[0.35em] uppercase" style={{ color: "#999" }}>Kuns</p>
-          <Link href="/art" className="text-[9px] font-medium tracking-[0.3em] uppercase"
-            style={{ color: "#1a6fff" }}>
-            Sien alles
-          </Link>
+      {/* ── ART TEASER ── */}
+      <section className="px-6 md:px-14 pt-28 md:pt-40 pb-16 md:pb-24">
+        <div className="max-w-lg mx-auto text-center mb-16 md:mb-24">
+          <p className="text-[9px] font-medium tracking-[0.4em] uppercase mb-4" style={{ color: "#1a6fff" }}>
+            Galery
+          </p>
+          <h2 className="scribble leading-none"
+            style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.8rem,6vw,4.5rem)", color: "#1c1c1c" }}>
+            Kuns
+          </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
-          {art.map(p => (
-            <Link key={p.id} href={`/product/${p.slug}`} className="group">
-              <div className="img-wrap watermarked relative aspect-[3/4] mb-4">
+        {/* Playful tilted trio — generous gaps, staggered vertically */}
+        <div className="flex flex-wrap justify-center items-start gap-x-8 gap-y-16 md:gap-x-14 max-w-4xl mx-auto">
+          {art.slice(0, 3).map((p, i) => (
+            <Link key={p.id} href={`/product/${p.slug}`}
+              className="tilt-card tape relative bg-white p-3 pb-6 w-[42%] md:w-64"
+              style={{
+                transform: `rotate(${tilts[i]}deg) translateY(${i === 1 ? "-28px" : "0"})`,
+              }}>
+              <div className="img-wrap watermarked relative aspect-[4/5]">
                 <Image src={p.image} alt={p.name} fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 45vw, 260px"
                   quality={90} />
               </div>
-              <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: "#bbb" }}>Kuns</p>
-              <p className="text-sm font-medium mb-1" style={{ color: "#1c1c1c" }}>{p.name}</p>
-              <p className="text-sm" style={{ color: "#1a6fff" }}>R{p.price}</p>
+              <p className="mt-3 text-center text-sm" style={{ fontFamily: "var(--font-display)", fontSize: "1.15rem", color: "#1c1c1c" }}>
+                {p.name}
+              </p>
+              <p className="text-center text-[11px]" style={{ color: "#1a6fff" }}>R{p.price}</p>
             </Link>
           ))}
+        </div>
+
+        <div className="text-center mt-20 md:mt-28">
+          <Link href="/art"
+            className="scribble inline-block text-sm font-medium"
+            style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem", color: "#1c1c1c" }}>
+            Sien al die kuns →
+          </Link>
         </div>
       </section>
 
       {/* ── PULL QUOTE ── */}
-      <div className="px-8 md:px-24 py-20 md:py-32 text-center border-t border-b" style={{ borderColor: "#e4dfd4" }}>
+      <div className="px-8 md:px-24 py-24 md:py-40 text-center border-t border-b" style={{ borderColor: "#e4dfd4" }}>
         <p className="leading-snug"
           style={{
             fontFamily: "var(--font-display)",
             fontSize: "clamp(1.8rem, 4vw, 3.2rem)",
             color: "#c5bfb3",
+            transform: "rotate(-1deg)",
+            display: "inline-block",
           }}>
           "Kuns is die taal wat almal<br />verstaan maar min kan praat."
         </p>
       </div>
 
-      {/* ── BOOKS ── */}
-      <section className="px-5 md:px-10 pt-16 md:pt-24 pb-20 md:pb-32">
-        <div className="flex items-end justify-between mb-8">
-          <p className="text-[9px] font-medium tracking-[0.35em] uppercase" style={{ color: "#999" }}>Boeke en Woorde</p>
-          <Link href="/books" className="text-[9px] font-medium tracking-[0.3em] uppercase"
-            style={{ color: "#1a6fff" }}>
-            Sien alles
-          </Link>
+      {/* ── BOOKS TEASER ── */}
+      <section className="px-6 md:px-14 pt-24 md:pt-32 pb-28 md:pb-44">
+        <div className="max-w-lg mx-auto text-center mb-16 md:mb-24">
+          <p className="text-[9px] font-medium tracking-[0.4em] uppercase mb-4" style={{ color: "#1a6fff" }}>
+            Lees & Beleef
+          </p>
+          <h2 className="scribble leading-none"
+            style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.8rem,6vw,4.5rem)", color: "#1c1c1c" }}>
+            Boeke en Woorde
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-          {books.map(b => (
-            <Link key={b.id} href={`/product/${b.slug}`} className="group">
-              <div className="aspect-[3/4] mb-5 flex items-center justify-center"
-                style={{ backgroundColor: "#f0ece3" }}>
-                <span className="text-8xl font-light select-none"
-                  style={{ fontFamily: "var(--font-display)", color: "#d5cfc5" }}>
+        <div className="flex flex-wrap justify-center items-start gap-x-8 gap-y-16 md:gap-x-14 max-w-4xl mx-auto">
+          {books.map((b, i) => (
+            <Link key={b.id} href={`/product/${b.slug}`}
+              className="tilt-card relative w-[42%] md:w-64"
+              style={{ transform: `rotate(${tilts[i + 2]}deg)` }}>
+              <div className="blob aspect-[4/5] mb-5 flex items-center justify-center overflow-hidden"
+                style={{ backgroundColor: i % 2 === 0 ? "#f0ece3" : "#e8f0ff" }}>
+                <span className="text-6xl md:text-7xl font-light select-none floaty"
+                  style={{ fontFamily: "var(--font-display)", color: i % 2 === 0 ? "#d5cfc5" : "#a8c4f5" }}>
                   {b.name[0]}
                 </span>
               </div>
-              <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: "#bbb" }}>
-                Boeke en Woorde
+              <p className="text-center" style={{ fontFamily: "var(--font-display)", fontSize: "1.15rem", color: "#1c1c1c" }}>
+                {b.name}
               </p>
-              <p className="text-sm mb-1 font-medium" style={{ color: "#1c1c1c" }}>{b.name}</p>
-              <p className="text-sm" style={{ color: "#1a6fff" }}>R{b.price}</p>
+              <p className="text-center text-[11px]" style={{ color: "#1a6fff" }}>R{b.price}</p>
             </Link>
           ))}
         </div>

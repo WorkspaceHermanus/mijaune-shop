@@ -59,3 +59,63 @@ body {
 .img-wrap { overflow: hidden; }
 .img-wrap img { transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
 .img-wrap:hover img { transform: scale(1.04); }
+
+/* ── Playful tilt cards ── */
+.tilt-card {
+  transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.45s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+.tilt-card:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 24px 48px -12px rgba(0,0,0,0.18);
+  z-index: 5;
+}
+
+/* Tape strip accent for polaroid feel */
+.tape::before {
+  content: "";
+  position: absolute;
+  top: -10px; left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 56px; height: 20px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  z-index: 6;
+}
+
+/* ── Spinning badge ── */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.spin-badge {
+  animation: spin-slow 14s linear infinite;
+}
+
+/* ── Scribble underline ── */
+.scribble {
+  position: relative;
+  display: inline-block;
+}
+.scribble::after {
+  content: "";
+  position: absolute;
+  left: -4%; right: -4%; bottom: -6px;
+  height: 8px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cpath d='M2 8 C 40 2, 80 12, 120 6 S 180 2, 198 8' stroke='%231a6fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* ── Blob shape ── */
+.blob {
+  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+}
+
+/* ── Floaty bounce ── */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.floaty { animation: floaty 4.5s ease-in-out infinite; }
