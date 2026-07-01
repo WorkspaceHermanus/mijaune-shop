@@ -18,9 +18,10 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Mijaune – Mijaune Shop",
+  title: "Mijaune Shop",
   description: "Mijaune se fotografie, boeke en kuns is hier beskikbaar.",
   themeColor: "#fffdf5",
+  icons: { icon: "/images/logo.jpeg" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
