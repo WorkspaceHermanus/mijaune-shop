@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: "Mijaune Shop",
   description: "Mijaune se fotografie, boeke en kuns is hier beskikbaar.",
   themeColor: "#fffdf5",
-  icons: { icon: "/images/logo.jpeg" },
+  icons: { icon: "/images/logo.png" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
