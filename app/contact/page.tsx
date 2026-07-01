@@ -2,43 +2,49 @@ export const metadata = { title: "Kontak — Mijaune Shop" };
 
 export default function ContactPage() {
   return (
-    <div className="max-w-2xl mx-auto px-4 py-24">
-      <div className="text-center mb-14">
-        <p className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-3">Kom praat</p>
-        <h1 className="font-serif text-5xl font-bold">Kontak</h1>
-      </div>
+    <div className="bg-[#080808] min-h-screen pt-16">
+      <div className="max-w-3xl mx-auto px-6 md:px-10 py-16 md:py-28">
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-sm">
-        <div>
-          <p className="uppercase tracking-widest text-xs text-gray-400 mb-4">Winkel Navrae</p>
-          <p className="text-gray-600 leading-relaxed">
-            Vrae oor bestellings, aflewering of produkte:<br />
-            <a href="mailto:winkel@mijaune.co.za" className="text-accent hover:underline">
-              winkel@mijaune.co.za
-            </a>
-          </p>
-        </div>
-        <div>
-          <p className="uppercase tracking-widest text-xs text-gray-400 mb-4">Samewerking & Besprekings</p>
-          <p className="text-gray-600 leading-relaxed">
-            Opvoerings, onderhoude en projekte:<br />
-            <a href="mailto:samewerking@mijaune.co.za" className="text-accent hover:underline">
-              samewerking@mijaune.co.za
-            </a>
-          </p>
-        </div>
-      </div>
+        <p className="text-[9px] tracking-[0.35em] uppercase text-[#1a6fff] mb-4">Kom praat</p>
+        <h1 className="mb-16"
+          style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,7vw,6rem)", color: "#ede8dd", lineHeight: 1 }}>
+          Kontak
+        </h1>
 
-      <div className="mt-14 border-t border-gray-200 pt-10 text-center">
-        <p className="text-xs uppercase tracking-widest text-gray-400 mb-3">Volg my</p>
-        <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noreferrer"
-          className="text-sm uppercase tracking-widest hover:text-accent transition-colors"
-        >
-          Instagram →
-        </a>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.05]">
+          {[
+            {
+              title: "Winkel Navrae",
+              body: "Vrae oor bestellings, aflewering of produkte:",
+              email: "winkel@mijaune.co.za",
+            },
+            {
+              title: "Samewerking & Besprekings",
+              body: "Opvoerings, onderhoude en projekte:",
+              email: "samewerking@mijaune.co.za",
+            },
+          ].map(block => (
+            <div key={block.title} className="bg-[#080808] p-8 md:p-10">
+              <p className="text-[9px] tracking-[0.28em] uppercase text-[#ede8dd]/25 mb-5">
+                {block.title}
+              </p>
+              <p className="text-sm text-[#ede8dd]/40 leading-relaxed mb-4">{block.body}</p>
+              <a href={`mailto:${block.email}`}
+                className="text-sm text-[#1a6fff] hover:text-[#ede8dd] transition-colors">
+                {block.email}
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-20 pt-12 border-t border-white/[0.05] text-center">
+          <p className="text-[9px] tracking-[0.3em] uppercase text-[#ede8dd]/20 mb-6">Volg my</p>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer"
+            className="text-[10px] font-semibold tracking-[0.28em] uppercase
+              text-[#ede8dd]/35 hover:text-[#ede8dd] transition-colors">
+            Instagram →
+          </a>
+        </div>
       </div>
     </div>
   );

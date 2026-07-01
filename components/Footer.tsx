@@ -2,37 +2,52 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer role="contentinfo" className="border-t border-gray-200" style={{ backgroundColor: "#fffdf5" }}>
-      <div className="px-4 md:px-8 py-12 text-center">
-        {/* Tagline — like "GAAN STAAN BIETJIE BUITE" */}
-        <h4 className="text-4xl font-bold mb-6" style={{ fontFamily: "var(--font-display)", color: "#1a6fff" }}>
-          Gaan koop iets mooi
-        </h4>
+    <footer className="border-t border-white/[0.05] bg-[#080808]">
+      <div className="px-6 md:px-10 py-16 md:py-20 flex flex-col md:flex-row md:items-end justify-between gap-10">
 
-        {/* Social icons */}
-        <ul className="flex justify-center gap-6 mb-2">
-          <li>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer"
-              title="Mijaune on Instagram" className="text-ink hover:opacity-60 transition-opacity">
-              <svg viewBox="0 0 512 512" width="24" height="24" fill="#444">
-                <path d="M256 49.5c67.3 0 75.2.3 101.8 1.5 24.6 1.1 37.9 5.2 46.8 8.7 11.8 4.6 20.2 10 29 18.8s14.3 17.2 18.8 29c3.4 8.9 7.6 22.2 8.7 46.8 1.2 26.6 1.5 34.5 1.5 101.8s-.3 75.2-1.5 101.8c-1.1 24.6-5.2 37.9-8.7 46.8-4.6 11.8-10 20.2-18.8 29s-17.2 14.3-29 18.8c-8.9 3.4-22.2 7.6-46.8 8.7-26.6 1.2-34.5 1.5-101.8 1.5s-75.2-.3-101.8-1.5c-24.6-1.1-37.9-5.2-46.8-8.7-11.8-4.6-20.2-10-29-18.8s-14.3-17.2-18.8-29c-3.4-8.9-7.6-22.2-8.7-46.8-1.2-26.6-1.5-34.5-1.5-101.8s.3-75.2 1.5-101.8c1.1-24.6 5.2-37.9 8.7-46.8 4.6-11.8 10-20.2 18.8-29s17.2-14.3 29-18.8c8.9-3.4 22.2-7.6 46.8-8.7 26.6-1.3 34.5-1.5 101.8-1.5m0-45.4c-68.4 0-77 .3-103.9 1.5C125.3 6.8 107 11.1 91 17.3c-16.6 6.4-30.6 15.1-44.6 29.1-14 14-22.6 28.1-29.1 44.6-6.2 16-10.5 34.3-11.7 61.2C4.4 179 4.1 187.6 4.1 256s.3 77 1.5 103.9c1.2 26.8 5.5 45.1 11.7 61.2 6.4 16.6 15.1 30.6 29.1 44.6 14 14 28.1 22.6 44.6 29.1 16 6.2 34.3 10.5 61.2 11.7 26.9 1.2 35.4 1.5 103.9 1.5s77-.3 103.9-1.5c26.8-1.2 45.1-5.5 61.2-11.7 16.6-6.4 30.6-15.1 44.6-29.1 14-14 22.6-28.1 29.1-44.6 6.2-16 10.5-34.3 11.7-61.2 1.2-26.9 1.5-35.4 1.5-103.9s-.3-77-1.5-103.9c-1.2-26.8-5.5-45.1-11.7-61.2-6.4-16.6-15.1-30.6-29.1-44.6-14-14-28.1-22.6-44.6-29.1-16-6.2-34.3-10.5-61.2-11.7-27-1.1-35.6-1.4-104-1.4z"/>
-                <path d="M256 126.6c-71.4 0-129.4 57.9-129.4 129.4s58 129.4 129.4 129.4 129.4-58 129.4-129.4-58-129.4-129.4-129.4zm0 213.4c-46.4 0-84-37.6-84-84s37.6-84 84-84 84 37.6 84 84-37.6 84-84 84z"/>
-                <circle cx="390.5" cy="121.5" r="30.2"/>
-              </svg>
-              <span className="sr-only">Instagram</span>
-            </a>
-          </li>
-        </ul>
+        {/* Left — tagline */}
+        <div>
+          <p className="text-[9px] tracking-[0.3em] uppercase text-[#ede8dd]/20 mb-4">Mijaune Shop</p>
+          <h4 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,5vw,3.5rem)", color: "#ede8dd" }}
+            className="leading-tight">
+            Gaan koop<br />iets mooi
+          </h4>
+        </div>
+
+        {/* Right — links + social */}
+        <div className="flex flex-col gap-6 md:items-end">
+          <nav className="flex flex-col md:items-end gap-3">
+            {[
+              { href: "/art",     label: "Kuns" },
+              { href: "/books",   label: "Boeke en Woorde" },
+              { href: "/contact", label: "Kontak" },
+            ].map(l => (
+              <Link key={l.href} href={l.href}
+                className="text-[10px] font-semibold tracking-[0.25em] uppercase
+                  text-[#ede8dd]/30 hover:text-[#ede8dd] transition-colors">
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          <a href="https://instagram.com" target="_blank" rel="noreferrer"
+            className="text-[#ede8dd]/25 hover:text-[#ede8dd] transition-colors">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.4">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            <span className="sr-only">Instagram</span>
+          </a>
+        </div>
       </div>
 
-      {/* Copyright bar */}
-      <div className="border-t border-gray-200 py-4 px-4 md:px-8">
-        <div className="flex flex-col md:flex-row md:justify-between text-xs" style={{ color: "#888" }}>
-          <small>&copy; {new Date().getFullYear()}, <Link href="/" className="hover:text-ink">Mijaune Shop</Link>.</small>
-          <small className="mt-1 md:mt-0">
-            <Link href="/contact" className="hover:text-ink transition-colors">Kontak</Link>
-          </small>
-        </div>
+      {/* Bottom bar */}
+      <div className="border-t border-white/[0.04] px-6 md:px-10 py-5
+        flex flex-col md:flex-row md:justify-between gap-2
+        text-[9px] tracking-[0.2em] uppercase text-[#ede8dd]/18">
+        <span>&copy; {new Date().getFullYear()} Mijaune Shop</span>
+        <span>Betaling via EFT · Hermanus, SA</span>
       </div>
     </footer>
   );
