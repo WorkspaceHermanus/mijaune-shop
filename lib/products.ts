@@ -1,3 +1,9 @@
+export type PrintSize = {
+  label: string;
+  cm: string;
+  price: number;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -6,7 +12,14 @@ export type Product = {
   description: string;
   image: string;
   slug: string;
+  sizes?: PrintSize[];
 };
+
+export const defaultArtSizes = (basePrice: number): PrintSize[] => [
+  { label: "A4", cm: "21 × 30 cm", price: basePrice },
+  { label: "A3", cm: "30 × 42 cm", price: Math.round(basePrice * 1.4) },
+  { label: "A2", cm: "42 × 59 cm", price: Math.round(basePrice * 2.1) },
+];
 
 export const products: Product[] = [
   // Books
@@ -46,6 +59,7 @@ export const products: Product[] = [
     description: "Swart-en-wit fotografie. Beperkte oplaag druk. Gesigneer en genommer.",
     image: "/images/zamalekker.jpg",
     slug: "zamalekker",
+    sizes: defaultArtSizes(1500),
   },
   {
     id: "a2",
@@ -55,6 +69,7 @@ export const products: Product[] = [
     description: "Swart-en-wit landskap. Beperkte oplaag druk. Gesigneer en genommer.",
     image: "/images/blanket-in-the-sky.jpg",
     slug: "blanket-in-the-sky",
+    sizes: defaultArtSizes(1800),
   },
   {
     id: "a3",
@@ -64,6 +79,7 @@ export const products: Product[] = [
     description: "Swart-en-wit fotografie. Beperkte oplaag druk. Gesigneer en genommer.",
     image: "/images/no-motor-boats.jpg",
     slug: "no-motor-boats",
+    sizes: defaultArtSizes(1500),
   },
   {
     id: "a4",
@@ -73,6 +89,7 @@ export const products: Product[] = [
     description: "Kleur fotografie. Beperkte oplaag druk. Gesigneer en genommer.",
     image: "/images/house-on-the-hill.jpg",
     slug: "house-on-the-hill",
+    sizes: defaultArtSizes(2000),
   },
   {
     id: "a5",
@@ -82,6 +99,7 @@ export const products: Product[] = [
     description: "Kleur fotografie. Beperkte oplaag druk. Gesigneer en genommer.",
     image: "/images/outside-stanford.jpg",
     slug: "outside-stanford",
+    sizes: defaultArtSizes(2000),
   },
 ];
 

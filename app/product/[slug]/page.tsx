@@ -4,6 +4,10 @@ import { useCart } from "@/lib/cart";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
+
+const MAX_BOX_H = 76; // px — tallest illustration (A2)
+const LONGEST_CM = 59; // A2 long edge
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   const product = products.find(p => p.slug === params.slug);
@@ -14,6 +18,22 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const hasImage = product.image && !product.image.includes("placeholder");
   const catLabel = isArt ? "Kuns" : "Boeke & Woorde";
   const catHref  = isArt ? "/art" : "/books";
+
+  const [selectedSize, setSelectedSize] = useState(product.sizes?.[0]);
+  const displayPrice = selectedSize ? selectedSize.price : product.price;
+
+  const handleAdd = () => {
+    if (selectedSize) {
+      add({
+        ...product,
+        id: `${product.id}-${selectedSize.label}`,
+        name: `${product.name} (${selectedSize.label})`,
+        price: selectedSize.price,
+      });
+    } else {
+      add(product);
+    }
+  };
 
   return (
     <div style={{ backgroundColor: "#faf8f2" }} className="min-h-screen pt-14">
@@ -70,11 +90,56 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <p className="text-sm leading-relaxed mb-8" style={{ color: "#999" }}>
             {product.description}
           </p>
+
+          {isArt && product.sizes && (
+            <div className="mb-10">
+              <p className="text-[9px] tracking-[0.28em] uppercase mb-5" style={{ color: "#bbb" }}>
+                Kies grootte
+              </p>
+              <div className="flex items-end gap-6 md:gap-8">
+                {product.sizes.map(s => {
+                  const [w, , h] = s.cm.split(" ");
+                  const hCm = parseFloat(h);
+                  const wCm = parseFloat(w);
+                  const boxH = Math.round((hCm / LONGEST_CM) * MAX_BOX_H);
+                  const boxW = Math.round((wCm / LONGEST_CM) * MAX_BOX_H);
+                  const active = selectedSize?.label === s.label;
+                  return (
+                    <button
+                      key={s.label}
+                      onClick={() => setSelectedSize(s)}
+                      className="flex flex-col items-center gap-3 transition-opacity"
+                      style={{ opacity: active ? 1 : 0.45 }}
+                    >
+                      <div className="flex items-end justify-center" style={{ height: MAX_BOX_H }}>
+                        <div
+                          style={{
+                            width: boxW,
+                            height: boxH,
+                            border: active ? "2px solid #1a6fff" : "1.5px solid #1c1c1c",
+                            backgroundColor: active ? "rgba(26,111,255,0.06)" : "transparent",
+                            transition: "all 0.25s ease",
+                          }}
+                        />
+                      </div>
+                      <p className="text-xs font-medium" style={{ color: active ? "#1a6fff" : "#1c1c1c" }}>
+                        {s.label}
+                      </p>
+                      <p className="text-[9px] tracking-[0.1em]" style={{ color: "#bbb" }}>
+                        {s.cm}
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           <p className="text-2xl font-medium mb-10" style={{ color: "#1c1c1c" }}>
-            R{product.price}
+            R{displayPrice}
           </p>
 
-          <button onClick={() => add(product)}
+          <button onClick={handleAdd}
             className="w-full py-4 text-[9px] font-semibold tracking-[0.35em] uppercase
               transition-all duration-300 mb-4"
             style={{ backgroundColor: "#1c1c1c", color: "#faf8f2" }}

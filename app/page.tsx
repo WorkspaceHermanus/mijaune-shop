@@ -25,23 +25,6 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-56 pointer-events-none"
           style={{ background: "linear-gradient(to top, rgba(250,248,242,0.9), transparent)" }} />
 
-        {/* Spinning badge — playful, top right */}
-        <div className="absolute top-6 right-6 md:top-10 md:right-10 w-24 h-24 md:w-32 md:h-32 z-10">
-          <svg viewBox="0 0 100 100" className="w-full h-full spin-badge">
-            <defs>
-              <path id="circlePath" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
-            </defs>
-            <text fontSize="8.6" fill="#fff" letterSpacing="2">
-              <textPath href="#circlePath">
-                BEPERKTE OPLAAG • GESIGNEER • MIJAUNE •
-              </textPath>
-            </text>
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#1a6fff" }} />
-          </div>
-        </div>
-
         <div className="absolute inset-x-0 bottom-0 px-6 md:px-14 pb-14 md:pb-20">
           <p className="text-[9px] tracking-[0.4em] uppercase mb-3" style={{ color: "rgba(255,255,255,0.7)" }}>
             Kuns · Fotografie · Woorde
