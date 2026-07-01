@@ -48,18 +48,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── MARQUEE ── */}
-      <div className="marquee-track py-3 border-b" style={{ borderColor: "#e4dfd4" }}>
-        <div className="marquee-inner select-none">
-          {[...Array(6)].map((_, i) => (
-            <span key={i} className="text-[9px] tracking-[0.35em] uppercase px-8"
-              style={{ color: "#bbb" }}>
-              KUNS  ·  FOTOGRAFIE  ·  BOEKE EN WOORDE  ·  HERMANUS  ·  GESIGNEER  ·
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* ── ART TEASER ── */}
       <section className="px-6 md:px-14 pt-28 md:pt-40 pb-16 md:pb-24">
         <div className="max-w-lg mx-auto text-center mb-16 md:mb-24">
