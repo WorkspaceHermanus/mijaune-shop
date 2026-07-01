@@ -70,56 +70,20 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* 2+1 editorial layout on desktop, 2-col on mobile */}
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3">
-
-          {/* Large feature — col 1-8 */}
-          <Link href={`/product/${art[0].slug}`}
-            className="col-span-2 md:col-span-8 img-wrap watermarked relative block"
-            style={{ aspectRatio: "16/10" }}>
-            <Image src={art[0].image} alt={art[0].name} fill
-              className="object-cover" sizes="(max-width: 768px) 100vw, 67vw" quality={90} priority />
-          </Link>
-
-          {/* Right column — col 9-12, two stacked */}
-          <div className="hidden md:flex md:col-span-4 flex-col gap-3">
-            {art.slice(1, 3).map(p => (
-              <Link key={p.id} href={`/product/${p.slug}`}
-                className="img-wrap watermarked relative block flex-1"
-                style={{ minHeight: 0 }}>
-                <div className="relative" style={{ aspectRatio: "4/3" }}>
-                  <Image src={p.image} alt={p.name} fill
-                    className="object-cover" sizes="33vw" quality={88} />
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* Items 2-3 on mobile (hidden on desktop in right col above, show as normal grid items) */}
-          {art.slice(1, 3).map(p => (
-            <Link key={p.id + "-m"} href={`/product/${p.slug}`}
-              className="md:hidden img-wrap watermarked relative block aspect-square">
-              <Image src={p.image} alt={p.name} fill
-                className="object-cover" sizes="50vw" quality={85} />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
+          {art.map(p => (
+            <Link key={p.id} href={`/product/${p.slug}`} className="group">
+              <div className="img-wrap watermarked relative aspect-[3/4] mb-4">
+                <Image src={p.image} alt={p.name} fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  quality={90} />
+              </div>
+              <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: "#bbb" }}>Kuns</p>
+              <p className="text-sm font-medium mb-1" style={{ color: "#1c1c1c" }}>{p.name}</p>
+              <p className="text-sm" style={{ color: "#1a6fff" }}>R{p.price}</p>
             </Link>
           ))}
-
-          {/* Bottom row — 3 across on desktop, 2-col on mobile */}
-          {art.slice(3, 5).map(p => (
-            <Link key={p.id} href={`/product/${p.slug}`}
-              className="col-span-1 md:col-span-6 img-wrap watermarked relative block"
-              style={{ aspectRatio: "3/2" }}>
-              <Image src={p.image} alt={p.name} fill
-                className="object-cover" sizes="(max-width: 768px) 50vw, 50vw" quality={88} />
-            </Link>
-          ))}
-        </div>
-
-        {/* Captions below grid */}
-        <div className="mt-5 flex flex-col gap-1">
-          <p className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "#bbb" }}>
-            {art[0].name} — R{art[0].price}
-          </p>
         </div>
       </section>
 

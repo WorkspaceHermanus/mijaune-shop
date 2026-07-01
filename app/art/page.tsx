@@ -21,27 +21,24 @@ export default function ArtPage() {
         </p>
       </div>
 
-      <div className="px-5 md:px-10 py-8 md:py-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
+      <div className="px-5 md:px-10 py-10 md:py-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
           {art.map((p, i) => (
-            <Link key={p.id} href={`/product/${p.slug}`}
-              className={`group block ${i === 0 ? "col-span-2 md:col-span-2" : ""}`}>
-              <div className={`img-wrap watermarked relative block mb-3
-                ${i === 0 ? "aspect-[16/10] md:aspect-[16/9]" : "aspect-square"}`}>
+            <Link key={p.id} href={`/product/${p.slug}`} className="group">
+              <div className="img-wrap watermarked relative aspect-[3/4] mb-4">
                 <Image
                   src={p.image}
                   alt={p.name}
                   fill
                   className="object-cover"
-                  sizes={i === 0
-                    ? "(max-width: 768px) 100vw, 66vw"
-                    : "(max-width: 768px) 50vw, 33vw"}
+                  sizes="(max-width: 768px) 50vw, 33vw"
                   quality={90}
-                  priority={i < 2}
+                  priority={i < 3}
                 />
               </div>
-              <p className="text-[10px] font-medium" style={{ color: "#1c1c1c" }}>{p.name}</p>
-              <p className="text-[10px] mt-0.5" style={{ color: "#1a6fff" }}>R{p.price}</p>
+              <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: "#bbb" }}>Kuns</p>
+              <p className="text-sm font-medium mb-1" style={{ color: "#1c1c1c" }}>{p.name}</p>
+              <p className="text-sm" style={{ color: "#1a6fff" }}>R{p.price}</p>
             </Link>
           ))}
         </div>
