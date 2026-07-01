@@ -1,7 +1,7 @@
 export type Product = {
   id: string;
   name: string;
-  category: "books" | "videos" | "art";
+  category: "books" | "art";
   price: number;
   description: string;
   image: string;
@@ -36,34 +36,6 @@ export const products: Product[] = [
     description: "ʼn Geillustreerde boek wat woord en beeld saamweef tot iets besonders.",
     image: "/images/placeholder-book-3.jpg",
     slug: "grond-en-gras",
-  },
-  // Videos
-  {
-    id: "v1",
-    name: "Die Eerste Woord",
-    category: "videos",
-    price: 120,
-    description: "ʼn Kort dokumentêr oor die skryfproses agter die eerste digbundel.",
-    image: "/images/placeholder-video-1.jpg",
-    slug: "die-eerste-woord",
-  },
-  {
-    id: "v2",
-    name: "Lank Na Middernag",
-    category: "videos",
-    price: 95,
-    description: "ʼn Musiekvideo-reeks — poësie, klank en lig in beweging.",
-    image: "/images/placeholder-video-2.jpg",
-    slug: "lank-na-middernag",
-  },
-  {
-    id: "v3",
-    name: "Stof en Ster",
-    category: "videos",
-    price: 150,
-    description: "ʼn Visuele essay oor landskap, taal en identiteit.",
-    image: "/images/placeholder-video-3.jpg",
-    slug: "stof-en-ster",
   },
   // Art
   {

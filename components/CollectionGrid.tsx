@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 const collections = [
-  { title: "VIDEO VIR MY", href: "/videos", image: "/images/blanket-in-the-sky.jpg" },
   { title: "BOEKE EN WOORDE", href: "/books", image: "/images/no-motor-boats.jpg" },
   { title: "KUNS", href: "/art", image: "/images/zamalekker.jpg" },
 ];

@@ -11,8 +11,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
   const { add } = useCart();
 
-  const categoryLabel: Record<string, string> = { books: "Boeke & Woorde", videos: "Video's", art: "Kuns" };
-  const categoryHref: Record<string, string> = { books: "/books", videos: "/videos", art: "/art" };
+  const categoryLabel: Record<string, string> = { books: "Boeke & Woorde", art: "Kuns" };
+  const categoryHref: Record<string, string> = { books: "/books", art: "/art" };
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-14">
