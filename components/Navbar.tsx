@@ -55,7 +55,7 @@ export default function Navbar() {
                 width={160}
                 height={70}
                 className="object-contain"
-                style={{ maxHeight: 56 }}
+                style={{ maxHeight: 56, mixBlendMode: "multiply" }}
                 priority
               />
             </Link>
