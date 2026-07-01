@@ -25,7 +25,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-        <div className="relative aspect-[3/4] bg-stone-200">
+        <div className={`relative aspect-[3/4] bg-stone-200 ${product.category === "art" && product.image && !product.image.includes("placeholder") ? "watermarked" : ""}`}>
           {product.image && !product.image.includes("placeholder") ? (
             <Image src={product.image} alt={product.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
           ) : (
@@ -37,7 +37,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
         <div className="flex flex-col md:pt-6">
           <p className="text-[10px] uppercase tracking-widest text-mustard font-semibold mb-3">{categoryLabel[product.category]}</p>
-          <h1 className="text-4xl font-bold uppercase tracking-wide text-ink mb-5 leading-tight">{product.name}</h1>
+          <h1 className="text-5xl font-bold mb-5 leading-tight" style={{ fontFamily: "var(--font-display)", color: "#1a6fff" }}>{product.name}</h1>
           <p className="text-sm text-ink/60 leading-relaxed mb-8">{product.description}</p>
           <p className="text-2xl font-bold text-ink mb-8">R{product.price}</p>
 

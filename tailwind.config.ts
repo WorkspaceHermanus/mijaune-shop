@@ -8,9 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ["var(--font-display)", "cursive"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+      },
       colors: {
         site: "#fffdf5",
         ink: "#444444",
+        blue: "#1a6fff",
         mustard: "#c9a227",
       },
     },

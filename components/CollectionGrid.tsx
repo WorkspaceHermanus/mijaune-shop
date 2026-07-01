@@ -9,16 +9,14 @@ const collections = [
 
 export default function CollectionGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3" id="collection-list-grid">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
       {collections.map((c) => (
         <Link
           key={c.href}
           href={c.href}
-          title={`Browse our ${c.title} collection`}
           className="featured-card group relative block overflow-hidden"
-          style={{ minHeight: 380 }}
+          style={{ minHeight: 320 }}
         >
-          {/* Background image */}
           <Image
             src={c.image}
             alt={c.title}
@@ -27,14 +25,12 @@ export default function CollectionGrid() {
             sizes="(max-width: 768px) 100vw, 33vw"
           />
 
-          {/* White card header — top left, exactly like Venture */}
+          {/* White card top-left — exactly like Venture theme */}
           <div className="featured-card__header featured-card__header--background absolute top-0 left-0 z-10">
-            <p className="text-lg font-black uppercase leading-tight tracking-wide text-ink"
-               style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" }}>
+            <p className="text-lg font-black uppercase leading-tight tracking-wide" style={{ color: "#444" }}>
               {c.title}
             </p>
-            <span className="featured-card__action block text-xs font-semibold tracking-widest uppercase mt-1.5"
-                  style={{ color: "#c9a227" }}>
+            <span className="featured-card__action block text-xs font-semibold tracking-widest uppercase mt-1.5">
               View all
             </span>
           </div>

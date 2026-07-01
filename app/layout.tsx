@@ -1,8 +1,21 @@
 import type { Metadata } from "next";
+import { Dancing_Script, Jost } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartProvider from "@/components/CartProvider";
+
+const dancing = Dancing_Script({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
+});
+
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-body",
+});
 
 export const metadata: Metadata = {
   title: "Mijaune – Mijaune Shop",
@@ -13,7 +26,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="af">
-      <body className="min-h-screen flex flex-col" style={{ backgroundColor: "#fffdf5", color: "#444" }}>
+      <body className={`${dancing.variable} ${jost.variable} min-h-screen flex flex-col`}
+        style={{ backgroundColor: "#fffdf5", color: "#444", fontFamily: "var(--font-body)" }}>
         <CartProvider>
           <Navbar />
           <main id="MainContent" role="main" className="flex-1">

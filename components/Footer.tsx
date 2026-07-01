@@ -5,8 +5,8 @@ export default function Footer() {
     <footer role="contentinfo" className="border-t border-gray-200" style={{ backgroundColor: "#fffdf5" }}>
       <div className="px-4 md:px-8 py-12 text-center">
         {/* Tagline — like "GAAN STAAN BIETJIE BUITE" */}
-        <h4 className="text-2xl font-black uppercase tracking-widest mb-6" style={{ color: "#444" }}>
-          GAAN KOOP IETS MOOI
+        <h4 className="text-4xl font-bold mb-6" style={{ fontFamily: "var(--font-display)", color: "#1a6fff" }}>
+          Gaan koop iets mooi
         </h4>
 
         {/* Social icons */}

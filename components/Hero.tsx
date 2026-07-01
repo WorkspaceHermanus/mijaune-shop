@@ -36,8 +36,8 @@ export default function Hero() {
         {/* Hero content overlay — bottom left, like Venture */}
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
           {/* Big yellow title */}
-          <h2 className="text-5xl md:text-8xl font-black uppercase leading-none mb-5"
-            style={{ color: "#c9a227", textShadow: "0 2px 8px rgba(0,0,0,0.2)" }}>
+          <h2 className="text-5xl md:text-8xl font-bold leading-none mb-5"
+            style={{ fontFamily: "var(--font-display)", color: "#fff", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
             {slides[current].title}
           </h2>
 

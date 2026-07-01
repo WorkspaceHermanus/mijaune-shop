@@ -2,23 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-display: "Dancing Script", cursive;
+  --font-body: "Jost", system-ui, sans-serif;
+  --blue: #1a6fff;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
   background-color: #fffdf5;
   color: #444;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
 }
 
-::selection { background: #444; color: #fffdf5; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--blue);
+}
 
-/* Match Venture theme's featured-card style */
-.featured-card {
+::selection { background: #1a6fff; color: #fffdf5; }
+
+/* Watermark overlay for sold images */
+.watermarked {
   position: relative;
   display: block;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
+}
+
+.watermarked::after {
+  content: "© Mijaune";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Diagonal watermark in center */
+.watermarked::before {
+  content: "© Mijaune";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+  letter-spacing: 2px;
 }
 
 .featured-card__header--background {
@@ -27,5 +66,5 @@ body {
 }
 
 .featured-card__action {
-  color: #c9a227;
+  color: #1a6fff;
 }
