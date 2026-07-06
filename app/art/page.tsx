@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getByCategory } from "@/lib/products";
 
-export const metadata = { title: "Kuns — Mijaune Shop" };
+export const metadata = { title: "Art — Mijaune Shop" };
 
 export default function ArtPage() {
   const art = getByCategory("art");
@@ -14,10 +14,10 @@ export default function ArtPage() {
         <p className="text-[9px] tracking-[0.35em] uppercase mb-4" style={{ color: "#bbb" }}>Mijaune</p>
         <h1 className="font-light leading-none"
           style={{ fontFamily: "var(--font-body)", fontSize: "clamp(2.5rem,6vw,5rem)", color: "#1c1c1c", letterSpacing: "-0.02em" }}>
-          Kuns
+          Art
         </h1>
         <p className="mt-4 text-xs leading-relaxed max-w-sm" style={{ color: "#999" }}>
-          Beperkte oplaag fotografie-drukke. Elke stuk word deur Mijaune gesigneer en genommer.
+          Limited edition photography prints. Each piece is signed and numbered by Mijaune.
         </p>
       </div>
 
@@ -36,7 +36,7 @@ export default function ArtPage() {
                   priority={i < 3}
                 />
               </div>
-              <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: "#bbb" }}>Kuns</p>
+              <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: "#bbb" }}>Art</p>
               <p className="text-sm font-medium mb-1" style={{ color: "#1c1c1c" }}>{p.name}</p>
               <p className="text-sm" style={{ color: "#1a6fff" }}>R{p.price}</p>
             </Link>

@@ -19,14 +19,14 @@ const jost = Jost({
 
 export const metadata: Metadata = {
   title: "Mijaune Shop",
-  description: "Mijaune se fotografie, boeke en kuns — beperkte oplaag, gesigneer.",
+  description: "Mijaune's photography, books and art — limited edition, signed.",
   themeColor: "#faf8f2",
   icons: { icon: "/images/logo.png" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="af">
+    <html lang="en">
       <body
         className={`${dancing.variable} ${jost.variable} min-h-screen flex flex-col`}
         style={{ backgroundColor: "#faf8f2", color: "#1c1c1c", fontFamily: "var(--font-body)" }}

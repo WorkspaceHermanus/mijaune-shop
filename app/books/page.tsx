@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getByCategory } from "@/lib/products";
 
-export const metadata = { title: "Boeke & Woorde — Mijaune Shop" };
+export const metadata = { title: "Books & Words — Mijaune Shop" };
 
 export default function BooksPage() {
   const books = getByCategory("books");
@@ -13,7 +13,7 @@ export default function BooksPage() {
         <p className="text-[9px] tracking-[0.35em] uppercase mb-4" style={{ color: "#bbb" }}>Mijaune</p>
         <h1 className="font-light leading-none"
           style={{ fontFamily: "var(--font-body)", fontSize: "clamp(2.5rem,6vw,5rem)", color: "#1c1c1c", letterSpacing: "-0.02em" }}>
-          Boeke en Woorde
+          Books & Words
         </h1>
       </div>
 
@@ -29,7 +29,7 @@ export default function BooksPage() {
                 </span>
               </div>
               <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: "#bbb" }}>
-                Boeke en Woorde
+                Books & Words
               </p>
               <p className="text-sm font-medium mb-1" style={{ color: "#1c1c1c" }}>{b.name}</p>
               <p className="text-sm" style={{ color: "#1a6fff" }}>R{b.price}</p>

@@ -29,9 +29,9 @@ export default function Navbar() {
             </button>
             <nav className="flex flex-col gap-7">
               {[
-                { href: "/art",     label: "Kuns" },
-                { href: "/books",   label: "Boeke" },
-                { href: "/contact", label: "Kontak" },
+                { href: "/art",     label: "Art" },
+                { href: "/books",   label: "Books" },
+                { href: "/contact", label: "Contact" },
               ].map(l => (
                 <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
                   className="text-[11px] font-medium tracking-[0.3em] uppercase text-[#999] hover:text-[#1c1c1c] transition-colors">
@@ -58,11 +58,11 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center gap-8 flex-1">
             <Link href="/art"
               className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#999] hover:text-[#1c1c1c] transition-colors">
-              Kuns
+              Art
             </Link>
             <Link href="/books"
               className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#999] hover:text-[#1c1c1c] transition-colors">
-              Boeke
+              Books
             </Link>
           </nav>
 
@@ -92,7 +92,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8 flex-1 justify-end">
             <Link href="/contact"
               className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#999] hover:text-[#1c1c1c] transition-colors">
-              Kontak
+              Contact
             </Link>
           </div>
           <div className="flex items-center justify-end flex-1 md:flex-none md:ml-8">

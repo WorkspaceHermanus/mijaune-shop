@@ -8,16 +8,16 @@ export default function Footer() {
         {/* Tagline */}
         <p style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,4vw,3rem)", color: "#1c1c1c" }}
           className="leading-tight">
-          Gaan koop<br />iets mooi
+          Go find<br />something beautiful
         </p>
 
         {/* Links */}
         <div className="flex flex-col md:items-end gap-5">
           <nav className="flex flex-col md:items-end gap-3">
             {[
-              { href: "/art",     label: "Kuns" },
-              { href: "/books",   label: "Boeke en Woorde" },
-              { href: "/contact", label: "Kontak" },
+              { href: "/art",     label: "Art" },
+              { href: "/books",   label: "Books & Words" },
+              { href: "/contact", label: "Contact" },
             ].map(l => (
               <Link key={l.href} href={l.href}
                 className="text-[9px] font-medium tracking-[0.3em] uppercase transition-colors"
@@ -45,7 +45,7 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} Mijaune Shop
         </small>
         <small className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "#ccc" }}>
-          Betaling via EFT · Hermanus
+          Payment via EFT · Hermanus
         </small>
       </div>
     </footer>

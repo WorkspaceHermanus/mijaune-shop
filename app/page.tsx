@@ -27,7 +27,7 @@ export default function Home() {
 
         <div className="absolute inset-x-0 bottom-0 px-6 md:px-14 pb-14 md:pb-20">
           <p className="text-[9px] tracking-[0.4em] uppercase mb-3" style={{ color: "rgba(255,255,255,0.7)" }}>
-            Kuns · Fotografie · Woorde
+            Art · Photography · Words
           </p>
           <h1 className="leading-none mb-8"
             style={{
@@ -43,7 +43,7 @@ export default function Home() {
               px-7 py-3.5 border border-white/70 text-white
               hover:bg-white hover:text-[#1c1c1c]
               transition-all duration-300">
-            Sien werke
+            View Work
           </Link>
         </div>
       </section>
@@ -52,11 +52,11 @@ export default function Home() {
       <section className="px-6 md:px-14 pt-28 md:pt-40 pb-16 md:pb-24">
         <div className="max-w-lg mx-auto text-center mb-16 md:mb-24">
           <p className="text-[9px] font-medium tracking-[0.4em] uppercase mb-4" style={{ color: "#1a6fff" }}>
-            Galery
+            Gallery
           </p>
           <h2 className="scribble leading-none"
             style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.8rem,6vw,4.5rem)", color: "#1c1c1c" }}>
-            Kuns
+            Art
           </h2>
         </div>
 
@@ -86,7 +86,7 @@ export default function Home() {
           <Link href="/art"
             className="scribble inline-block text-sm font-medium"
             style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem", color: "#1c1c1c" }}>
-            Sien al die kuns →
+            See all the art →
           </Link>
         </div>
       </section>
@@ -101,7 +101,7 @@ export default function Home() {
             transform: "rotate(-1deg)",
             display: "inline-block",
           }}>
-          "Kuns is die taal wat almal<br />verstaan maar min kan praat."
+          "Art is the language everyone<br />understands but few can speak."
         </p>
       </div>
 
@@ -109,11 +109,11 @@ export default function Home() {
       <section className="px-6 md:px-14 pt-24 md:pt-32 pb-28 md:pb-44">
         <div className="max-w-lg mx-auto text-center mb-16 md:mb-24">
           <p className="text-[9px] font-medium tracking-[0.4em] uppercase mb-4" style={{ color: "#1a6fff" }}>
-            Lees & Beleef
+            Read & Discover
           </p>
           <h2 className="scribble leading-none"
             style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.8rem,6vw,4.5rem)", color: "#1c1c1c" }}>
-            Boeke en Woorde
+            Books & Words
           </h2>
         </div>
 

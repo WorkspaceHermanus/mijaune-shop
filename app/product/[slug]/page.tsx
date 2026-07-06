@@ -16,7 +16,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const { add } = useCart();
   const isArt = product.category === "art";
   const hasImage = product.image && !product.image.includes("placeholder");
-  const catLabel = isArt ? "Kuns" : "Boeke & Woorde";
+  const catLabel = isArt ? "Art" : "Books & Words";
   const catHref  = isArt ? "/art" : "/books";
 
   const [selectedSize, setSelectedSize] = useState(product.sizes?.[0]);
@@ -94,7 +94,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           {isArt && product.sizes && (
             <div className="mb-10">
               <p className="text-[9px] tracking-[0.28em] uppercase mb-5" style={{ color: "#bbb" }}>
-                Kies grootte
+                Choose Size
               </p>
               <div className="flex items-end gap-6 md:gap-8">
                 {product.sizes.map(s => {
@@ -149,17 +149,17 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             onMouseLeave={e => {
               (e.target as HTMLButtonElement).style.backgroundColor = "#1c1c1c";
             }}>
-            Voeg by Mandjie
+            Add to Cart
           </button>
 
           <p className="text-[9px] tracking-[0.2em] uppercase text-center" style={{ color: "#bbb" }}>
-            Betaling via EFT · Besonderhede by afrekening
+            Payment via EFT · Details at checkout
           </p>
 
           {isArt && (
             <div className="mt-10 pt-8 grid grid-cols-3 gap-4 text-center"
               style={{ borderTop: "1px solid #e4dfd4" }}>
-              {["Beperkte Oplaag", "Gesigneer", "Genommer"].map(tag => (
+              {["Limited Edition", "Signed", "Numbered"].map(tag => (
                 <p key={tag} className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "#bbb" }}>
                   {tag}
                 </p>

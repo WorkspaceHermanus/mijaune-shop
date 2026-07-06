@@ -17,22 +17,22 @@ export default function CartPage() {
               <path d="M2 7l3.5 3.5L12 3" stroke="#1a6fff" strokeWidth="1.3" strokeLinecap="round"/>
             </svg>
           </div>
-          <p className="text-[9px] tracking-[0.35em] uppercase mb-4" style={{ color: "#bbb" }}>Bestelling Ontvang</p>
+          <p className="text-[9px] tracking-[0.35em] uppercase mb-4" style={{ color: "#bbb" }}>Order Received</p>
           <h1 className="font-light mb-8"
             style={{ fontFamily: "var(--font-body)", fontSize: "clamp(2rem,5vw,3.5rem)", color: "#1c1c1c", letterSpacing: "-0.02em" }}>
-            Dankie!
+            Thank You!
           </h1>
           <p className="text-sm mb-8 leading-relaxed" style={{ color: "#999" }}>
-            Maak asseblief jou EFT-betaling oor:
+            Please make your EFT payment to:
           </p>
           <div className="text-left p-6 mb-8 space-y-3" style={{ backgroundColor: "#f0ece3", border: "1px solid #e4dfd4" }}>
             {[
-              ["Bank", "[Bank Naam]"],
-              ["Rekeninghouer", "Mijaune [Van]"],
-              ["Rekeningnommer", "[000 000 0000]"],
-              ["Takkode", "[000000]"],
-              ["Verwysing", "Jou naam"],
-              ["Bedrag", `R${total}`],
+              ["Bank", "FNB"],
+              ["Account Holder", "Mijaune"],
+              ["Account Number", "62896300341"],
+              ["Branch Code", "250655"],
+              ["Reference", "Your name"],
+              ["Amount", `R${total}`],
             ].map(([k, v]) => (
               <div key={k} className="flex justify-between text-sm">
                 <span style={{ color: "#bbb" }}>{k}</span>
@@ -41,12 +41,12 @@ export default function CartPage() {
             ))}
           </div>
           <p className="text-[9px] tracking-[0.2em] uppercase mb-10" style={{ color: "#bbb" }}>
-            Stuur betalingsbewys na winkel@mijaune.co.za
+            Send proof of payment to shop@mijaune.co.za
           </p>
           <Link href="/"
             className="text-[9px] font-medium tracking-[0.35em] uppercase px-8 py-3.5 inline-block transition-colors"
             style={{ border: "1px solid #d5cfc5", color: "#999" }}>
-            Terug na Tuis
+            Back to Home
           </Link>
         </div>
       </div>
@@ -57,15 +57,15 @@ export default function CartPage() {
     return (
       <div style={{ backgroundColor: "#faf8f2" }} className="min-h-screen pt-14 flex items-center justify-center px-6">
         <div className="text-center py-24">
-          <p className="text-[9px] tracking-[0.35em] uppercase mb-6" style={{ color: "#bbb" }}>Mandjie</p>
+          <p className="text-[9px] tracking-[0.35em] uppercase mb-6" style={{ color: "#bbb" }}>Cart</p>
           <h1 className="font-light mb-8"
             style={{ fontFamily: "var(--font-body)", fontSize: "clamp(2rem,5vw,3.5rem)", color: "#1c1c1c", letterSpacing: "-0.02em" }}>
-            Jou Mandjie is Leeg
+            Your Cart is Empty
           </h1>
           <Link href="/art"
             className="text-[9px] font-medium tracking-[0.35em] uppercase px-8 py-3.5 inline-block transition-colors"
             style={{ backgroundColor: "#1c1c1c", color: "#faf8f2" }}>
-            Sien Werke
+            View Work
           </Link>
         </div>
       </div>
@@ -76,10 +76,10 @@ export default function CartPage() {
     <div style={{ backgroundColor: "#faf8f2" }} className="min-h-screen pt-14">
       <div className="max-w-xl mx-auto px-6 py-14 md:py-20">
 
-        <p className="text-[9px] tracking-[0.35em] uppercase mb-5" style={{ color: "#bbb" }}>Mandjie</p>
+        <p className="text-[9px] tracking-[0.35em] uppercase mb-5" style={{ color: "#bbb" }}>Cart</p>
         <h1 className="font-light mb-12"
           style={{ fontFamily: "var(--font-body)", fontSize: "clamp(2rem,5vw,3.5rem)", color: "#1c1c1c", letterSpacing: "-0.02em" }}>
-          Jou Mandjie
+          Your Cart
         </h1>
 
         <div style={{ borderTop: "1px solid #e4dfd4" }}>
@@ -89,35 +89,35 @@ export default function CartPage() {
               <div className="flex-1">
                 <p className="text-sm font-medium" style={{ color: "#1c1c1c" }}>{item.name}</p>
                 <p className="text-[9px] tracking-[0.15em] uppercase mt-1" style={{ color: "#bbb" }}>
-                  Hoeveelheid: {item.qty}
+                  Quantity: {item.qty}
                 </p>
               </div>
               <p className="text-sm font-medium" style={{ color: "#1c1c1c" }}>R{item.price * item.qty}</p>
               <button onClick={() => remove(item.id)}
                 className="text-[9px] tracking-[0.2em] uppercase transition-colors"
                 style={{ color: "#ccc" }}>
-                Verwyder
+                Remove
               </button>
             </div>
           ))}
         </div>
 
         <div className="flex items-center justify-between pt-6 pb-10">
-          <span className="text-[9px] tracking-[0.25em] uppercase" style={{ color: "#999" }}>Totaal</span>
+          <span className="text-[9px] tracking-[0.25em] uppercase" style={{ color: "#999" }}>Total</span>
           <span className="text-xl font-medium" style={{ color: "#1c1c1c" }}>R{total}</span>
         </div>
 
         <div className="p-5 mb-6" style={{ backgroundColor: "#f0ece3", border: "1px solid #e4dfd4" }}>
-          <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: "#bbb" }}>Betaalmetode: EFT</p>
+          <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: "#bbb" }}>Payment Method: EFT</p>
           <p className="text-xs leading-relaxed" style={{ color: "#999" }}>
-            Klik "Bevestig Bestelling". Bankbesonderhede verskyn op die volgende bladsy.
+            Click "Confirm Order". Bank details will appear on the next page.
           </p>
         </div>
 
         <button onClick={() => { setOrdered(true); clear(); }}
           className="w-full py-4 text-[9px] font-semibold tracking-[0.35em] uppercase transition-colors"
           style={{ backgroundColor: "#1c1c1c", color: "#faf8f2" }}>
-          Bevestig Bestelling
+          Confirm Order
         </button>
       </div>
     </div>
